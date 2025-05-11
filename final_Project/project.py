@@ -4,7 +4,7 @@ import sys
 pygame.init()
 screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Button!")
-main_font = pygame.font.SysFont("a-otf shin go pro", 50)
+main_font = pygame.font.SysFont("ShinGoPro-ExLight", 50)
 
 class Button():
     def __init__(self, image, x_pos, y_pos, text_input):
@@ -46,4 +46,3 @@ while True:
         button.update()
         button.changeColor(pygame.mouse.get_pos())
         pygame.display.update()
-        
