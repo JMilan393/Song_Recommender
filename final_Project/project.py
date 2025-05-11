@@ -28,9 +28,9 @@ class Button():
         if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
             self.text = main_font.render(self.text_input, True, "green")
         else:
-            self.text = main_font.render(self.text_input, True, "white")
+            self.text = main_font.render(self.text_input, True, "black")
 
-button_surface = pygame.image.load("button.png")
+button_surface = pygame.image.load("twewy_tb.png")
 button_surface = pygame.transform.scale(button_surface, (400, 150))
 button = Button(button_surface, 400, 300, "Button")
 
