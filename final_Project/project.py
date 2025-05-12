@@ -5,6 +5,9 @@ pygame.init()
 screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Button!")
 main_font = pygame.font.SysFont("ShinGoPro-ExLight", 50)
+bg = pygame.image.load("udagawa.jpg")
+Testsong = pygame.mixer.Sound("bird_in_the_hand.mp3")
+
 
 class Button():
     def __init__(self, image, x_pos, y_pos, text_input):
@@ -32,7 +35,7 @@ class Button():
 
 button_surface = pygame.image.load("twewy_tb.png")
 button_surface = pygame.transform.scale(button_surface, (400, 150))
-button = Button(button_surface, 400, 300, "Button")
+Start_button = Button(button_surface, 400, 300, "Click")
 
 while True:
     for event in pygame.event.get():
@@ -40,9 +43,14 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            button.checkForInput(pygame.mouse.get_pos())
+            Start_button.checkForInput(pygame.mouse.get_pos())
+            Testsong.play()
+            #Testsong = pygame.mixer.Sound("Click_sound.mp3")
+        #if Start_buttoncheckForInput(pygame.mouse.get_pos()):
+            
 
-        screen.fill("white")
-        button.update()
-        button.changeColor(pygame.mouse.get_pos())
+        screen.fill("#004166")
+        screen.blit(bg, (75, 0))
+        Start_button.update()
+        Start_button.changeColor(pygame.mouse.get_pos())
         pygame.display.update()
