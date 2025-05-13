@@ -11,11 +11,11 @@ Startsong = pygame.mixer.Sound("bird_in_the_hand.mp3")
 Click = pygame.mixer.Sound("Click_sound.mp3")
 FONT = pygame.font.SysFont("ShinGoPro-ExLight", 50)
 #Failed Video player
-'''WIDTH, HEIGHT = 900, 900
-#SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))'''
 
 
-class Button():
+
+"""class Button():
+
     def __init__(self, image, x_pos, y_pos, text_input):
         self.image = image
         self.x_pos = x_pos
@@ -37,18 +37,41 @@ class Button():
         if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
             self.text = main_font.render(self.text_input, True, "green")
         else:
-            self.text = main_font.render(self.text_input, True, "black")
+            self.text = main_font.render(self.text_input, True, "black")"""
 
-button_surface = pygame.image.load("twewy_tb.png")
-button_surface = pygame.transform.scale(button_surface, (400, 150))
-Question_button = Button(button_surface, 400, 300, "Click")
-Answer_button_A = Button(button_surface, 200, 600, "Click")
-Answer_button_B = Button(button_surface, 600, 600, "Click")
+class Button():
+    def __init__(self, image, pos, text_input, font, base_color, hovering_color):
+        self.image = image
+        self.x_pos = pos[0]
+        self.y_pos = pos[1]
+        self.font = main_font
+        self.base_color, self.hovering_color = base_color, hovering_color
+        self.text_input = text_input
+        self.text = self.font.render(self.text_input, True, self.base_color)
+        if self.image is None:
+            self.image = self.text
+            self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
+            self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
+    
+    def update(self, screen):
+        if self.image is not None:
+            screen.blit(self.image, self.rect)
+            screen.blit(self.text, self.text_rect)
+    
+    def checkForInput(self, position):
+        if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
+            return True
+        return False
+    
+    def changeColor(self, position):
+        if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
+            self.text = self.font.render(self.text_input, True, self.hovering_color)
+        else:
+            self.text = self.font.render(self.text_input, True, self.base_color)
 
-current_question = ""
-current_answer = ""
+#button_surface = pygame.image.load("twewy_tb.png")
+#button_surface = pygame.transform.scale(button_surface, (400, 150))
 
-index = 0
 
 demo_quiz_data = {
     "What are you in the mood for today?": "Techno" "Not feeling techno today...",
@@ -57,26 +80,19 @@ demo_quiz_data = {
     
 }
 
-current_question = list(demo_quiz_data)[index]
-current_answer = list(demo_quiz_data.values())[index]
-current_question_text = FONT.render(current_question, True, "black")
-current_question_rect = current_question_text.get_rect(center=(400, 400))
-current_answer_text = FONT.render(current_answer, True, "black")
-current_answer_rect = current_answer_text.get_rect(center=(400, 400))
-current_index_text = FONT.render(f"{index+1}/{len(demo_quiz_data)}", True, "black")
-current_index_rect = current_index_text.get_rect(center=(400, 600))
-
-def question1():
+def question1(score1, score2):
     pygame.display.set_caption("Question 1")
     while True:
         screen.fill("#004166")
         screen.blit(bg, (75, 0))
-        score1 = 0
-        score2 = 0
         mouse_pos = pygame.mouse.get_pos()
-        question1 = Button(button_surface, 400, 300, "What are you in the mood for today?")
-        answer1 = Button(button_surface, 200, 600, "Techno, duh.")
-        answer2 = Button(button_surface, 600, 600, "Not feeling techno today...")
+        question1 = Button(image=pygame.image.load("twewy_tb.png"), pos=(400, 300), 
+                            text_input="What are you in the mood for today?", font=main_font, base_color="black", hovering_color="green")
+        #Button(button_surface, 400, 300, "What are you in the mood for today?")
+        answer1 = Button(image=pygame.image.load("twewy_tb.png"), pos=(200, 600), 
+                            text_input="Techno, duh.", font=main_font, base_color="black", hovering_color="green")
+        answer2 = Button(image=pygame.image.load("twewy_tb.png"), pos=(600, 600), 
+                            text_input="Not feeling techno today...", font=main_font, base_color="black", hovering_color="green")
 
         for button in [question1, answer1, answer2]:
             button.changeColor(mouse_pos)
@@ -95,27 +111,33 @@ def question1():
                     Click.play()
                 if answer1.checkForInput(mouse_pos):
                     score1 = score1 + 1
+                    return score1
                 if answer2.checkForInput(mouse_pos):
                     score2 = score2 + 1
+                    return score2
         pygame.display.update()
         
-        return score1, score2
+        #return score1, score2
                     
 
 
 
-def twewy_song_quiz(score1, score2):
+def twewy_song_quiz():
     Startsong.play()
+    score1 = 0
+    score2 = 0
+    
     while True:
         for event in pygame.event.get():
-            screen.blit(current_question_text, (400, 300))
+            question1(score1, score2)
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                Question_button.checkForInput(pygame.mouse.get_pos())
-                Answer_button_A.checkForInput(pygame.mouse.get_pos())
-                Answer_button_B.checkForInput(pygame.mouse.get_pos())
+                true
+                #Question_button.checkForInput(pygame.mouse.get_pos())
+                #Answer_button_A.checkForInput(pygame.mouse.get_pos())
+                #Answer_button_B.checkForInput(pygame.mouse.get_pos())
             
 
             
@@ -126,15 +148,8 @@ def twewy_song_quiz(score1, score2):
                 #Results screen
                 #Play song
             elif:'''
-
         screen.fill("#004166")
         screen.blit(bg, (75, 0))
-        Question_button.update()
-        Answer_button_A.update()
-        Answer_button_B.update()
-        Question_button.changeColor(pygame.mouse.get_pos())
-        Answer_button_A.changeColor(pygame.mouse.get_pos())
-        Answer_button_B.changeColor(pygame.mouse.get_pos())
         pygame.display.update()
             
         
