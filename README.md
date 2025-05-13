@@ -1,6 +1,6 @@
 # The World Ends With You Song_Recommender
 ## Demo
-
+https://youtu.be/DedP8KSahd8
 ## GitHub Repository
 https://github.com/JMilan393/Song_Recommender
 ## Description
@@ -27,3 +27,6 @@ I'm gonna put the text on here, so you can actually read what the quiz is asking
 "You should listen to Owari Hajimari, from NEO: TWEWY! Sit back and listen!"
 "You should listen to Revelation, from NEO: TWEWY! (This is one of my personal favorites), Sit back and listen!"
 "You should listen to Lulaby for You, from TWEWY! It's a very sweet song. Sit back and listen!"
+
+##Tutorials I used:
+https://www.youtube.com/watch?v=3Yhhzflmxfs&list=PLFZEX0Qj0zed8uVcVLsRUdWO_iIvy7-Ao
