@@ -110,7 +110,7 @@ def question2A():
         pygame.display.update()
 
 def question2B():
-    pygame.display.set_caption("Question 2A")
+    pygame.display.set_caption("Question 2B")
     while True:
         screen.fill("#004166")
         screen.blit(bg, (75, 0))
@@ -149,7 +149,7 @@ def results1():
         screen.fill("#004166")
         screen.blit(bg, (75, 0))
         mouse_pos = pygame.mouse.get_pos()
-        reccomended_song = Button(button_surface, 400, 300, "You should listen to Insomnia, from NEO: TWEWY!")
+        reccomended_song = Button(button_surface, 400, 300, "You should listen to Insomnia, from NEO: TWEWY! Sit back and listen!")
         #Button(image=pygame.image.load("twewy_tb.png"), pos=(400, 300), 
             #text_input="What are you in the mood for today?", font=main_font, base_color="black", hovering_color="green")
         #Button(button_surface, 400, 300, "What are you in the mood for today?")
@@ -185,7 +185,7 @@ def results2():
         screen.fill("#004166")
         screen.blit(bg, (75, 0))
         mouse_pos = pygame.mouse.get_pos()
-        reccomended_song = Button(button_surface, 400, 300, "You should listen to Owari Hajimari, from NEO: TWEWY!")
+        reccomended_song = Button(button_surface, 400, 300, "You should listen to Owari Hajimari, from NEO: TWEWY! Sit back and listen!")
         quit = Button(button_surface, 200, 600, "QUIT")
         restart = Button(button_surface, 600, 600, "Restart?")
 
@@ -214,7 +214,7 @@ def results3():
         screen.fill("#004166")
         screen.blit(bg, (75, 0))
         mouse_pos = pygame.mouse.get_pos()
-        reccomended_song = Button(button_surface, 400, 300, "You should listen to Revelation, from NEO: TWEWY! (This is one of my personal favorites)")
+        reccomended_song = Button(button_surface, 400, 300, "You should listen to Revelation, from NEO: TWEWY! (This is one of my personal favorites), Sit back and listen!")
         quit = Button(button_surface, 200, 600, "QUIT")
         restart = Button(button_surface, 600, 600, "Restart?")
 
@@ -243,7 +243,7 @@ def results4():
         screen.fill("#004166")
         screen.blit(bg, (75, 0))
         mouse_pos = pygame.mouse.get_pos()
-        reccomended_song = Button(button_surface, 400, 300, "You should listen to Lulaby for You, from TWEWY! It's a very sweet song.")
+        reccomended_song = Button(button_surface, 400, 300, "You should listen to Lulaby for You, from TWEWY! It's a very sweet song. Sit back and listen!")
         quit = Button(button_surface, 200, 600, "QUIT")
         restart = Button(button_surface, 600, 600, "Restart?")
 
