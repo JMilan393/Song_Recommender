@@ -97,10 +97,10 @@ def question1():
                     score1 = score1 + 1
                 if answer2.checkForInput(mouse_pos):
                     score2 = score2 + 1
+        pygame.display.update()
+        
         return score1, score2
                     
-
-        pygame.display.update()
 
 
 
