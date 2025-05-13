@@ -42,7 +42,8 @@ class Button():
 button_surface = pygame.image.load("twewy_tb.png")
 button_surface = pygame.transform.scale(button_surface, (400, 150))
 Question_button = Button(button_surface, 400, 300, "Click")
-Answer_button_A = Button(button_surface, 400, 300, "Click")
+Answer_button_A = Button(button_surface, 200, 600, "Click")
+Answer_button_B = Button(button_surface, 600, 600, "Click")
 
 current_question = ""
 current_answer = ""
