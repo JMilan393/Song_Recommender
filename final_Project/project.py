@@ -9,8 +9,8 @@ main_font = pygame.font.SysFont("ShinGoPro-ExLight", 50)
 bg = pygame.image.load("udagawa.jpg")
 Startsong = pygame.mixer.Sound("bird_in_the_hand.mp3")
 Click = pygame.mixer.Sound("Click_sound.mp3")
-#Results1Song = pygame.mixer.Sound("Insomnia.mp3")
-#Results2Song = pygame.mixer.Sound("Owari_Hajimari.mp3")
+Results1Song = pygame.mixer.Sound("Insomnia.mp3")
+Results2Song = pygame.mixer.Sound("OWARI-HAJIMARI -NEO MIX-.mp3")
 
 #Failed Video player
 
@@ -33,7 +33,8 @@ class Button():
 
     def checkForInput(self, position):
         if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
-            print("Button Press!")
+            return True
+        return False
     
     def changeColor(self, position):
         if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
@@ -110,8 +111,6 @@ def question1():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if question1.checkForInput(mouse_pos):
-                    Click.play()
                 if answer1.checkForInput(mouse_pos):
                     results1()
                 if answer2.checkForInput(mouse_pos):
@@ -124,7 +123,7 @@ def question1():
         #return score1, score2
 def results1():
     pygame.mixer.pause()
-
+    Results1Song.play()
     pygame.display.set_caption("Results!")
     while True:
         screen.fill("#004166")
@@ -149,20 +148,18 @@ def results1():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if question1.checkForInput(mouse_pos):
-                    Click.play()
                 if quit.checkForInput(mouse_pos):
                     pygame.quit()
                     sys.exit()
                 if restart.checkForInput(mouse_pos):
-                    question1()
+                    twewy_song_quiz()
             
                 
         pygame.display.update()  
 
 def results2():
     pygame.mixer.pause()
-
+    Results2Song.play()
     pygame.display.set_caption("Results!")
     while True:
         screen.fill("#004166")
@@ -180,13 +177,11 @@ def results2():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if question1.checkForInput(mouse_pos):
-                    Click.play()
                 if quit.checkForInput(mouse_pos):
                     pygame.quit()
                     sys.exit()
                 if restart.checkForInput(mouse_pos):
-                    question1()
+                    twewy_song_quiz()
             
                 
         pygame.display.update()          
@@ -195,8 +190,8 @@ def results2():
 
 
 def twewy_song_quiz():
+    pygame.mixer.pause()
     Startsong.play()
-    
     while True:
         for event in pygame.event.get():
             question1()
