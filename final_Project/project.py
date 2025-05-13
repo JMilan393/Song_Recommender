@@ -84,15 +84,10 @@ def question2A():
         screen.blit(bg, (75, 0))
         mouse_pos = pygame.mouse.get_pos()
         question = Button(button_surface, 400, 300, "Ah Techno! Great choice! Are you feeling more amped or more lowkey?")
-    #Button(image=pygame.image.load("twewy_tb.png"), pos=(400, 300), 
-        #text_input="What are you in the mood for today?", font=main_font, base_color="black", hovering_color="green")
-    #Button(button_surface, 400, 300, "What are you in the mood for today?")
+ 
         answer1 = Button(button_surface, 200, 600, "AMPED TO THE MAX!")
-    #Button(image=pygame.image.load("twewy_tb.png"), pos=(200, 600), 
-        #text_input="Techno, duh.", font=main_font, base_color="black", hovering_color="green")
+
         answer2 = Button(button_surface, 600, 600, "please keep it chill.")
-    #Button(image=pygame.image.load("twewy_tb.png"), pos=(600, 600), 
-        #text_input="Not feeling techno today...", font=main_font, base_color="black", hovering_color="green")
 
         for button in [question, answer1, answer2]:
             button.changeColor(mouse_pos)
@@ -116,15 +111,11 @@ def question2B():
         screen.blit(bg, (75, 0))
         mouse_pos = pygame.mouse.get_pos()
         question = Button(button_surface, 400, 300, "No Techno? No problem! JRock or R&B?")
-    #Button(image=pygame.image.load("twewy_tb.png"), pos=(400, 300), 
-        #text_input="What are you in the mood for today?", font=main_font, base_color="black", hovering_color="green")
-    #Button(button_surface, 400, 300, "What are you in the mood for today?")
+   
         answer1 = Button(button_surface, 200, 600, "JRock is my life.")
-    #Button(image=pygame.image.load("twewy_tb.png"), pos=(200, 600), 
-        #text_input="Techno, duh.", font=main_font, base_color="black", hovering_color="green")
+    
         answer2 = Button(button_surface, 600, 600, "R&B all day, any day!")
-    #Button(image=pygame.image.load("twewy_tb.png"), pos=(600, 600), 
-        #text_input="Not feeling techno today...", font=main_font, base_color="black", hovering_color="green")
+   
 
         for button in [question, answer1, answer2]:
             button.changeColor(mouse_pos)
@@ -274,15 +265,6 @@ def twewy_song_quiz():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            
-        
-            
-            #if event.type == pygame.MOUSEBUTTONDOWN:
-                #question1.checkForInput(pygame.mouse.get_pos())
-                #Question_button.checkForInput(pygame.mouse.get_pos())
-                #Answer_button_A.checkForInput(pygame.mouse.get_pos())
-                #Answer_button_B.checkForInput(pygame.mouse.get_pos())
-        #if Start_buttoncheckForInput(pygame.mouse.get_pos()):
             
         screen.fill("#004166")
         screen.blit(bg, (75, 0))
