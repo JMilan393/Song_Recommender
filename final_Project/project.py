@@ -1,7 +1,6 @@
 from ctypes.wintypes import HFONT
 import pygame
 import sys
-from pyvidplayer2 import Video
 
 pygame.init()
 screen = pygame.display.set_mode((800, 800))
@@ -9,6 +8,7 @@ pygame.display.set_caption("Twewy Music Quiz!")
 main_font = pygame.font.SysFont("ShinGoPro-ExLight", 50)
 bg = pygame.image.load("udagawa.jpg")
 Startsong = pygame.mixer.Sound("bird_in_the_hand.mp3")
+Click = pygame.mixer.Sound("Click_sound.mp3")
 FONT = pygame.font.SysFont("ShinGoPro-ExLight", 50)
 #Failed Video player
 '''WIDTH, HEIGHT = 900, 900
@@ -59,35 +59,88 @@ demo_quiz_data = {
 
 current_question = list(demo_quiz_data)[index]
 current_answer = list(demo_quiz_data.values())[index]
-current_question_object = FONT.render(current_question, True, "white")
-current_question_rect = current_question_object.get_rect(center=(400, 400))
-current_answer_object = FONT.render(current_answer, True, "white")
-current_answer_rect = current_answer_object.get_rect(center=(400, 400))
-current_index_object = FONT.render(f"{index+1}/{len(demo_quiz_data)}", True, "white")
-current_index_rect = current_index_object.get_rect(center=(400, 600))
+current_question_text = FONT.render(current_question, True, "black")
+current_question_rect = current_question_text.get_rect(center=(400, 400))
+current_answer_text = FONT.render(current_answer, True, "black")
+current_answer_rect = current_answer_text.get_rect(center=(400, 400))
+current_index_text = FONT.render(f"{index+1}/{len(demo_quiz_data)}", True, "black")
+current_index_rect = current_index_text.get_rect(center=(400, 600))
 
-def twewy_song_quiz():
+def question1():
+    pygame.display.set_caption("Question 1")
     while True:
+        screen.fill("#004166")
+        screen.blit(bg, (75, 0))
+        score1 = 0
+        score2 = 0
+        mouse_pos = pygame.mouse.get_pos()
+        question1 = Button(button_surface, 400, 300, "What are you in the mood for today?")
+        answer1 = Button(button_surface, 200, 600, "Techno, duh.")
+        answer2 = Button(button_surface, 600, 600, "Not feeling techno today...")
+
+        for button in [question1, answer1, answer2]:
+            button.changeColor(mouse_pos)
+            button.update(screen)
         for event in pygame.event.get():
-            Startsong.play()
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
 
-            #if event.type == pygame.MOUSEBUTTONDOWN:
-                #Start_button.checkForInput(pygame.mouse.get_pos(), 400, 300)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if question1.checkForInput(mouse_pos):
+                    Click.play()
+                if answer1.checkForInput(mouse_pos):
+                    score1 = score1 + 1
+                if answer2.checkForInput(mouse_pos):
+                    score2 = score2 + 1
+        return score1, score2
+                    
+
+        pygame.display.update()
+
+
+
+def twewy_song_quiz(score1, score2):
+    Startsong.play()
+    while True:
+        for event in pygame.event.get():
+            screen.blit(current_question_text, (400, 300))
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                Question_button.checkForInput(pygame.mouse.get_pos())
+                Answer_button_A.checkForInput(pygame.mouse.get_pos())
+                Answer_button_B.checkForInput(pygame.mouse.get_pos())
             
-            #Testsong = pygame.mixer.Sound("Click_sound.mp3")
+
+            
+            
         #if Start_buttoncheckForInput(pygame.mouse.get_pos()):
-            
+            '''if score1 > score2:
+                #stop playing
+                #Results screen
+                #Play song
+            elif:'''
 
         screen.fill("#004166")
         screen.blit(bg, (75, 0))
-        #Start_button.update()
-        #Start_button.changeColor(pygame.mouse.get_pos())
+        Question_button.update()
+        Answer_button_A.update()
+        Answer_button_B.update()
+        Question_button.changeColor(pygame.mouse.get_pos())
+        Answer_button_A.changeColor(pygame.mouse.get_pos())
+        Answer_button_B.changeColor(pygame.mouse.get_pos())
         pygame.display.update()
-
+            
         
+
+
+
 #I Tried adding a video, It's too much to install
 """def startup():
     for event in pygame.event.get():
